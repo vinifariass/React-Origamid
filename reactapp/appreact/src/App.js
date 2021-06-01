@@ -1,4 +1,7 @@
-import React, {Fragment} from 'react';
+import React from 'react';
+import Header from './Header';
+import Home from './Home';
+import Produtos from './Produtos';
 
 // const titulo = <h1>Esse é um titulo</h1>
 
@@ -127,31 +130,80 @@ import React, {Fragment} from 'react';
   
 // }
 
-import Header from './Header'
-import Footer from './Footer'
-import Form from './Form/Form';
+// import Header from './Header'
+// import Footer from './Footer'
+// import Form from './Form/Form';
 
-const Teste = () => {
-  const active = true;
-  if (active) {
-    return <p> Teste</p>
-  }
-  return null
-}
-const App = () => {
-  return (
-    <div>
-      <Fragment>
-        <Teste />
-        <Header />
-        <Form />
-        <Form />
-        <Form />
+// const Teste = () => {
+//   const active = true;
+//   if (active) {
+//     return <p> Teste</p>
+//   }
+//   return null
+// }
+// const App = () => {
+//   return (
+//     <div>
+//       <Fragment>
+//         <Teste />
+//         <Header />
+//         <Form />
+//         <Form />
+//         <Form />
 
-        <Footer />
-      </Fragment>
+//         <Footer />
+//       </Fragment>
       
-    </div>
+//     </div>
+//   )
+// }
+
+// const Titulo = ({cor, texto, children}) => {
+//   return <h1 style={{color: cor}}>
+//     {texto},{children}
+//     </h1>
+// }
+
+// const App = () => {
+//   return (
+//     <div>
+//       <Titulo cor="red" texto="Meu titulo 1">
+//         Isso é o children
+//         <p>Teste</p>
+//       </Titulo>
+//       <Titulo cor="blue" texto="Meu titulo 2" />
+
+//     </div>
+//   )
+// }
+//  export default App;
+
+
+
+const App = () => {
+  const {pathname} = window.location
+
+  let Pagina;
+
+  if (pathname === '/produtos'){
+    Pagina = Produtos
+  } else {
+    Pagina = Home
+  }
+
+  
+  return (
+    <section>
+      <Header />
+      <Pagina />
+
+    </section>
   )
+
 }
-export default App;
+
+export default App
+
+
+
+

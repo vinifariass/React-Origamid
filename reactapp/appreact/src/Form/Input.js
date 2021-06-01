@@ -1,8 +1,14 @@
 import React from 'react'
+import Button from './Button'
 
-const Input = () => {
+const Input = ({label,id, ...props}) => {
   return (
-    <input type="text"/>
+    <div style={{margin: '1rem 0'}}>
+      <label htmlFor={id}>{label}</label>
+      <input id={id} type="text" {...props}/>
+      <Button />
+    </div>
+    
       
     
   )

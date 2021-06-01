@@ -3,7 +3,7 @@ import React from 'react'
 const Button = () => {
   return (
     <button>
-      Enviar
+      Clique
     </button>
   )
 }
