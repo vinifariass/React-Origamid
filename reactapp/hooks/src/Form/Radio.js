@@ -1,19 +1,18 @@
 import React from 'react'
 
-const Radio = ({options, value, setValue, ...props}) => {
+const Radio = ({pergunta, options, onChange, value ,id, active}) => {
+  if(active === false ) return null
   return (
-    <>
-    {options.map((option)=> (
-        <label key={option}>
-        <input type="radio" value={option} checked={value === option} onChange={({target})=> setValue(target.value)}
-        {...props}
-        />
+    <fieldset style={{padding: '2rem', marginBottom: '1rem', border: '2px solid #eee'}}>
+      <legend style={{fontWeight: 'bold'}}>{pergunta})</legend>
+      {options.map(option => 
+      <label key={option} style={{marginBottom: "1rem", fontFamily: "monospace"}}>
+        <input type="radio" value={option} onChange={onChange}
+        checked={value === option} 
+        id={id}/>
         {option}
-      </label>
-    ))}
-     
-    </>
+        </label>)}
+      </fieldset>
   )
 }
-
 export default Radio

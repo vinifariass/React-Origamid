@@ -1,144 +1,29 @@
-import React from 'react'
-import Input from './Form/Input'
-import useForm from './Hooks/useForms'
+import './App.css'
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+import Produtos from "./Components/Produtos";
+import Contato from "./Components/Contato";
+import Produto from './Components/Produto';
 
 const App = () => {
-
-  const cep = useForm('cep')
-  const email = useForm('email')
-
- 
-
-  function handleSubmit (event) {
-    event.preventDefault()
-    if(cep.validate()) {
-      console.log('Enviou');
-    } else {
-      console.log('Não enviar')
-    }
-  }
-
   return (
-    <form onSubmit={handleSubmit}>
-      <Input 
-      label="CEP" 
-      id="cep"
-       {...cep}
-       type="text"
-      placeholder="00000-000" />
+    <div className="App">
+      <BrowserRouter>
+        <Header />
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Produtos />} />
+            <Route path="produto/:id" element={<Produto />} />
+            <Route path="contato" element={<Contato />} />
+          </Routes>
+        </div>
+        
+        <Footer />
+      </BrowserRouter>
+    </div>
+  );
+};
 
-<Input 
-      label="Email" 
-      id="email"
-       {...cep}
-       type="email"
-      />
-      <button>Enviar</button>
-
-      
-    </form>
-  )
-  
-    // <form action="">
-    //   {coresArray.map((cor,index) => <lable key={index} style={{ textTransform: 'capitalize' }}>
-    //     <input type="checkbox" 
-    //     value={cor}
-    //     checked={cores.includes(cor)}
-
-    //     onChange={handleChange}/>
-    //     {cor}
-    //   </lable>)}
-    
-    // </form>
- 
-// const formFields= [{
-//   id: 'nome',
-//   label: 'Nome',
-//   type: 'text',
-// },{
-//   id: 'email',
-//   label: 'Email',
-//   type: 'email',
-// }, 
-// {id: 'senha',
-//   label: 'Senha',
-//     type: 'password',
-//   } 
-// , {id: 'cep',
-// label: 'Cep',
-//   type: 'text',
-// }, {id: 'numero',
-//   label: 'Numero',
-//   type: 'text',}
-// , 
-// {
-//   id: 'bairro',
-//   label: 'Bairro',
-//   type: 'text',},
-
-//   {id: 'cidade',
-//   label: 'Cidade',
-//   type: 'text',},
-
-//   {id: 'estado',
-//   label: 'Estado',
-//   type: 'text',}
-
-// ]
-// const forms = formFields.reduce((acc,field) => {
-//   return {
-//     ...acc, [field.id]: ''
-//   }
-// }, {})
-
-
-// const App = () => {
-
-//   const [form, setForm] = React.useState(
-//     formFields.reduce((acc,field) => {
-//       return {
-//         ...acc, [field.id]: ''
-//       }
-//     }, {})
-    
-//   )
-
-//   const [response, setResponse] = React.useState(null)
-
-//   function handleChange({target}) {
-//     const {id, value} = target
-//     setForm({...form, [id]: value})
-    
-//   }
-
-//   function handleSubmit(event){
-//     event.preventDefault()
-//     fetch('http://ranekapi.origamid.dev/json/api/usuario',{
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(form)
-//     }).then(response => {
-//       setResponse(response)
-//     })
-
-//   }
-
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//     {formFields.map(({id,label,type}) => (
-//       <div>
-//         <label htmlFor={id}>{label}</label>
-//       <input type={type} id={id} value={form[id]} onChange={handleChange}/>
-//       </div>
-//     )) }
-//     {response ** response.ok && <p>Formulário Enviado</p>}
-//     <button>Enviar</button>
-//     </form>
-    
-//   )
-
-}
-export default App
+export default App;
