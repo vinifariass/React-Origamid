@@ -3,8 +3,8 @@ import { USER_POST } from "../../api";
 import useFetch from "../../Hooks/useFetch";
 import useForm from "../../Hooks/useForm";
 import { UserContext } from "../../UserContext";
-import { Button } from "../Forms/Button";
-import { Input } from "../Forms/Input";
+import Button from '../Forms/Button';
+import Input from '../Forms/Input';
 import Error from "../Helper/Error";
 
 const LoginCreate = () => {
